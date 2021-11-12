@@ -1,3 +1,7 @@
-<?php get_header(); ?>
+<?php 
+get_header(); 
 
-<?php get_footer(); ?>
+// TODO: Add ACF to Partials code
+
+get_footer();
+?>

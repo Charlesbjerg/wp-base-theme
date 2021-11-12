@@ -24,17 +24,6 @@ function initial_theme_setup() {
 		'caption',
 	));
 
-	// Add ACF Options
-	if (function_exists('acf_add_options_page')) {
-		acf_add_options_page(array(
-			'page_title' 	=> 'Theme General Settings',
-			'menu_title'	=> 'Theme Settings',
-			'menu_slug' 	=> 'theme-general-settings',
-			'capability'	=> 'edit_posts',
-			'redirect'		=> false
-		));
-	}
-
 	// Setup theme menus
 	register_nav_menus(array(
 		'main-menu' => esc_html__('Main Menu', 'wordpress-base-theme'),
@@ -45,13 +34,3 @@ function initial_theme_setup() {
 	
 }
 add_action('after_setup_theme', 'initial_theme_setup');
-
-// Exclude any pages from the search results
-function search_filter_exclude_pages( $query ) {
-
-	if ( ! $query->is_admin && $query->is_search && $query->is_main_query() ) {
-		 $query->set( 'post__not_in', array(163) );
-   }
-}
-
-// add_action( 'pre_get_posts', 'search_filter_exclude_pages' );
